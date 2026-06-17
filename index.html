@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="一封可以本地打开的温柔纪念网页，包含照片、时间线、留言、音乐和互动彩蛋。"
+    />
+    <title>给你的一封慢慢发光的信</title>
+    <link rel="preload" href="./assets/keepsake-bg.png" as="image" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <canvas class="ambient-canvas" id="ambientCanvas" aria-hidden="true"></canvas>
+
+    <header class="site-header" aria-label="页面导航">
+      <a class="brand" href="#top" aria-label="回到开头">For You</a>
+      <nav>
+        <a href="#photos">照片</a>
+        <a href="#timeline">时间线</a>
+        <a href="#letter">留言</a>
+        <a href="#secret">彩蛋</a>
+      </nav>
+      <button class="icon-button" id="musicToggle" type="button" aria-label="播放音乐">
+        <span class="music-icon" aria-hidden="true"></span>
+      </button>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="hero-visual" aria-hidden="true">
+          <img src="./assets/keepsake-bg.png" alt="" />
+        </div>
+        <div class="hero-copy">
+          <p class="kicker">今天想把很多平常没说出口的话，认真放在这里。</p>
+          <h1 id="heroTitle">给你的一封慢慢发光的信</h1>
+          <p class="lead">
+            遇见你之后，日子没有变得喧闹，只是每一个普通瞬间，都多了一点值得珍藏的光。
+          </p>
+          <div class="hero-actions" aria-label="主要操作">
+            <a class="text-link primary" href="#letter">打开这封信</a>
+            <button class="text-link secondary" id="sparkButton" type="button">点亮一点小宇宙</button>
+          </div>
+        </div>
+        <aside class="date-mark" aria-label="纪念信息">
+          <span>our day</span>
+          <strong id="daysTogether">000</strong>
+          <small>days of gentle luck</small>
+        </aside>
+      </section>
+
+      <section class="modes" aria-labelledby="modeTitle">
+        <div>
+          <p class="section-eyebrow">choose a scene</p>
+          <h2 id="modeTitle">换一种语气，也还是写给你。</h2>
+        </div>
+        <div class="mode-switcher" role="group" aria-label="场景切换">
+          <button class="mode-chip is-active" type="button" data-mode="anniversary">纪念日</button>
+          <button class="mode-chip" type="button" data-mode="birthday">生日</button>
+          <button class="mode-chip" type="button" data-mode="confession">表白</button>
+          <button class="mode-chip" type="button" data-mode="apology">道歉</button>
+          <button class="mode-chip" type="button" data-mode="surprise">惊喜</button>
+        </div>
+        <p class="mode-line" id="modeLine">
+          谢谢你和我一起，把一年里很多不起眼的小事，过成了只属于我们的纪念。
+        </p>
+      </section>
+
+      <section class="photo-section" id="photos" aria-labelledby="photosTitle">
+        <div class="section-heading">
+          <p class="section-eyebrow">photo roll</p>
+          <h2 id="photosTitle">把喜欢的照片放进来。</h2>
+          <p>
+            我先把几张很喜欢的瞬间放在这里。以后还可以点击任意相框换照片，新的图片只会保存在当前浏览器里。
+          </p>
+        </div>
+
+        <div class="photo-roll" aria-label="照片墙">
+          <label class="photo-frame large has-image" tabindex="0">
+            <input type="file" accept="image/*" data-photo="0" />
+            <span>第一次心动的瞬间</span>
+            <img src="./assets/photo-01.jpg" alt="第一张照片" data-photo-img="0" />
+          </label>
+          <label class="photo-frame tall has-image" tabindex="0">
+            <input type="file" accept="image/*" data-photo="1" />
+            <span>一起走过的路</span>
+            <img src="./assets/photo-02.jpg" alt="第二张照片" data-photo-img="1" />
+          </label>
+          <label class="photo-frame has-image" tabindex="0">
+            <input type="file" accept="image/*" data-photo="2" />
+            <span>普通但很好的某天</span>
+            <img src="./assets/photo-03.jpg" alt="第三张照片" data-photo-img="2" />
+          </label>
+          <label class="photo-frame wide has-image" tabindex="0">
+            <input type="file" accept="image/*" data-photo="3" />
+            <span>以后还想再去的地方</span>
+            <img src="./assets/photo-04.jpg" alt="第四张照片" data-photo-img="3" />
+          </label>
+        </div>
+      </section>
+
+      <section class="timeline-section" id="timeline" aria-labelledby="timelineTitle">
+        <div class="section-heading">
+          <p class="section-eyebrow">timeline</p>
+          <h2 id="timelineTitle">我们把时间过成了证据。</h2>
+        </div>
+        <ol class="timeline">
+          <li>
+            <time>01</time>
+            <h3>遇见</h3>
+            <p>那天不算盛大，但我后来想起它，总觉得命运悄悄把灯调亮了一点。</p>
+          </li>
+          <li>
+            <time>02</time>
+            <h3>靠近</h3>
+            <p>从一句多聊一会儿开始，我们慢慢拥有了只属于彼此的笑点和默契。</p>
+          </li>
+          <li>
+            <time>03</time>
+            <h3>并肩</h3>
+            <p>不是每一天都完美，可我越来越确定，能一起面对的人比完美更重要。</p>
+          </li>
+          <li>
+            <time>04</time>
+            <h3>以后</h3>
+            <p>想把很多很多明天都留给你，慢慢走，认真爱，好好生活。</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="letter-section" id="letter" aria-labelledby="letterTitle">
+        <div class="letter-paper">
+          <p class="section-eyebrow">letter</p>
+          <h2 id="letterTitle">有些话，想郑重地说一次。</h2>
+          <textarea id="letterText" aria-label="可编辑留言">亲爱的你：
+
+谢谢你出现在我的生活里，也谢谢你愿意把那么多真实的情绪、疲惫、快乐和期待都交给我。
+
+我喜欢我们相处时那些很轻的小事：分享一口好吃的，走路时自然靠近，隔着屏幕也忍不住想笑。它们不夸张，却让我觉得安稳。
+
+如果这是纪念日，我想说：往后的日子，我还想继续站在你身边。
+如果这是生日，我想说：愿你被世界温柔以待，也被我认真偏爱。
+如果这是表白，我想说：我喜欢你，清楚、认真、没有退路。
+如果这是道歉，我想说：对不起，我会把你的感受放在更前面。
+
+这封信没有华丽结尾，因为我想把答案放到以后的每一天里。</textarea>
+          <div class="letter-actions">
+            <button class="text-link primary" id="saveLetter" type="button">保存留言</button>
+            <button class="text-link secondary" id="printLetter" type="button">打印成信</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="secret-section" id="secret" aria-labelledby="secretTitle">
+        <div>
+          <p class="section-eyebrow">secret</p>
+          <h2 id="secretTitle">这里藏着一个小机关。</h2>
+          <p>
+            连续点击这颗心，或者输入你们之间的暗号。温柔的事情，值得多一点仪式感。
+          </p>
+        </div>
+        <button class="heart-button" id="heartButton" type="button" aria-label="互动彩蛋">
+          <span aria-hidden="true"></span>
+        </button>
+        <p class="secret-message" id="secretMessage" aria-live="polite">
+          我把最认真、最偏心、最想靠近你的部分，都留给了你。
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Made with patience, for one person only.</span>
+      <a href="#top">回到开头</a>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js" defer></script>
+  </body>
+</html>
